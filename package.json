@@ -4,7 +4,9 @@
   "description": "mint on commit!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build",
+    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/dwga-hackathon-11-2021/comint/issues"
   },
-  "homepage": "https://github.com/dwga-hackathon-11-2021/comint#readme"
+  "homepage": "https://github.com/dwga-hackathon-11-2021/comint#readme",
+  "dependencies": {
+    "rarepress": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "prettier": "2.4.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
 }
