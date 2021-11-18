@@ -1,0 +1,19 @@
+{
+  "name": "comint",
+  "version": "1.0.0",
+  "description": "mint on commit!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwga-hackathon-11-2021/comint.git"
+  },
+  "author": "dwwr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dwga-hackathon-11-2021/comint/issues"
+  },
+  "homepage": "https://github.com/dwga-hackathon-11-2021/comint#readme"
+}
