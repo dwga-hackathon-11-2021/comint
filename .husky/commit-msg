@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "$*"
+commit_msg=$(cat "${1:?Missing commit message file}")
+npm run mint $commit_msg

@@ -7,7 +7,8 @@
     "mint": "node dist/mint.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --build",
-    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix"
+    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "prettier": "2.4.1",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "husky": "^7.0.0"
   }
 }
