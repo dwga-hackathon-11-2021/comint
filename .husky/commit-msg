@@ -5,5 +5,3 @@ echo "$*"
 commit_msg=$(cat "${1:?Missing commit message file}")
 exec < /dev/tty
 npm run mint $commit_msg
-
-exit 1

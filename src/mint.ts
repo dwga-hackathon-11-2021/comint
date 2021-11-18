@@ -1,33 +1,34 @@
 const Rareterm = require('rareterm.node')
+const deepai = require('deepai')
+
+const generateImage = async (commitMessage: string) => {
+  deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K')
+  return await deepai.callStandardApi("text2img", {
+    text: `${commitMessage}`,
+});
+}
 
 const mint = async () => {
   const commitArgs = process.argv.slice(2, process.argv.includes('#') ? process.argv.indexOf('#') : undefined)
   const commitMessage = commitArgs.join(' ')
-  console.log("commit message:", commitMessage)
-  // 1. Initialize a rarepress object from Rareterm
+  const image = await generateImage(commitMessage)
+
   const rarepress = new Rareterm()
-  // 2. Connect to a rinkeby rarenet node
   await rarepress.init({ host: "https://eth.rarenet.app/v1" })
 
-  // 3. Import a web image to rarepress file system
-  // let cid = await rarepress.fs.add("")
+  let cid = image?  await rarepress.fs.add(image.output_url) : undefined
 
-  // 4. Create and save a token on rarepress
   let token = await rarepress.token.create({
     type: "ERC721",
     metadata: {
       name: `${commitMessage}`,
       description: "test passing commit message into token.create",
-      // image: "/ipfs/" + cid
+      image: image ? "/ipfs/" + cid : undefined
     }
   })
 
-  // 5. Publish the image on public IPFS
-  // await rarepress.fs.push(cid)
-  // 6. Publish the metadata on public IPFS
+  await rarepress.fs.push(cid)
   await rarepress.fs.push(token.tokenURI)
-  console.log("token", token)
-  // 7. Publish the token to the marketplace
   let receipt = await rarepress.token.send(token)
 
   console.log("# SENT", receipt)

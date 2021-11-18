@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dwga-hackathon-11-2021/comint#readme",
   "dependencies": {
+    "deepai": "^1.0.17",
     "rarepress": "^0.1.7",
     "rareterm.node": "0.0.10"
   },
