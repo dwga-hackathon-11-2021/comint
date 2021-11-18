@@ -2,6 +2,11 @@ const Rareterm = require('rareterm.node')
 
 const mint = async () => {
   console.log(process.argv)
+  const commitArgs = process.argv.slice(2, process.argv.includes('#') ? process.argv.indexOf('#') : undefined)
+  const commitMessage = commitArgs.join(" ")
+  console.log("commit args:", commitArgs)
+  // const commitMessage = commitArgs.join(' ')
+  console.log("commit message:", commitMessage)
   // 1. Initialize a rarepress object from Rareterm
   // const rarepress = new Rareterm()
   // 2. Connect to a rinkeby rarenet node
