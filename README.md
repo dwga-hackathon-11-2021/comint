@@ -9,7 +9,7 @@ Rarepress is used to lazily mint to Rarible. NFTs are minted with the commit mes
 
 Instructions:
 1. Clone & Install `comint` repository into your project
-2. `cd comint && npm install`
+2. `cd comint && npm install && npm run build`
 3. integrate comint commit-msg hook into your husky workflow
 
 
