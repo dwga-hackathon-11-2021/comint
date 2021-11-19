@@ -2,10 +2,16 @@ const Rareterm = require('rareterm.node')
 const deepai = require('deepai')
 
 const generateImage = async (commitMessage: string) => {
-  deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K')
-  return await deepai.callStandardApi("text2img", {
-    text: `${commitMessage}`,
-});
+  console.log("commit message", commitMessage)
+  deepai.setApiKey('ea86e381-b86b-442c-990a-fc4df98a303a')
+  let resp
+  try {
+    resp = await deepai.callStandardApi("text2img", {
+      text: `${commitMessage}`,})
+  } catch (e) {
+    console.log("errors", e)
+  }
+  return resp
 }
 
 const mint = async () => {
@@ -16,14 +22,14 @@ const mint = async () => {
   const rarepress = new Rareterm()
   await rarepress.init({ host: "https://eth.rarenet.app/v1" })
 
-  let cid = image?  await rarepress.fs.add(image.output_url) : undefined
+  let cid = !!image ? await rarepress.fs.add(image.output_url) : undefined
 
   let token = await rarepress.token.create({
     type: "ERC721",
     metadata: {
       name: `${commitMessage}`,
       description: "test passing commit message into token.create",
-      image: image ? "/ipfs/" + cid : undefined
+      image: !!image ? "/ipfs/" + cid : undefined
     }
   })
 
