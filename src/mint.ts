@@ -28,7 +28,7 @@ const mint = async () => {
     type: "ERC721",
     metadata: {
       name: `${commitMessage}`,
-      description: "test passing commit message into token.create",
+      description: `This is a Co-Mint-Mint for commit: ${commitMessage}`,
       image: !!image ? "/ipfs/" + cid : undefined
     }
   })
